@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::Test::.</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    restrictedStrings = ['lorem', 'ipsum', 'far', 'sit', 'amet'];
+
+    var body = document.getElementsByTagName('body')[0];
+    var form = document.createElement('form');
+    form.setAttribute('onsubmit', 'getValue(event);');
+    var input = document.createElement('input');
+    var button = document.createElement('button');
+    input.setAttribute('type', 'text');
+    input.setAttribute('autofocus', 't');
+    input.setAttribute('placeholder', 'Enter Value');
+    input.setAttribute('id', 'entervalue');
+    input.setAttribute('required', '');
+    button.setAttribute('type', 'submit');
+    button.innerText = 'Add Value';
+
+    body.appendChild(form);
+    form.appendChild(input);
+    form.appendChild(button);
+    var ul = document.createElement('ol');
+    body.appendChild(ul);
+
+    function getValue(e){
+        e.preventDefault();
+
+        var li = document.createElement('li');
+        var buttonDelete = document.createElement('button');
+        buttonDelete.setAttribute('id', 'deleteVal');
+        buttonDelete.setAttribute('onClick', 'deleteValue(this);');
+        buttonDelete.innerText = 'Delete';
+        var addValue = document.getElementById('entervalue').value;
+        (ul.childElementCount === 4) && (button.disabled = true);
+
+        var val = restrictedStrings.indexOf(addValue);
+        if(val == -1){
+            ul.insertBefore(li,ul.firstChild);
+            li.innerText = addValue;
+            li.appendChild(buttonDelete);
+        }
+
+
+
+        form.reset();
+
+    }
+
+    function deleteValue(e){
+
+        var isFirst = e.parentNode.parentNode.children[0] === e.parentNode;
+        isFirst || e.parentNode.parentNode.removeChild(e.parentNode);
+
+        var total = document.getElementsByTagName('ol')[0].children.length;
+        console.log(total);
+
+        button.disabled = false;
+    }
+</script>
+</body>
+</html>
+
+
+

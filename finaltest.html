@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::Final Test::.</title>
+</head>
+<body>
+<div id="nav"></div>
+
+<script type="text/javascript">
+
+    function CreateNav(navClass, location, options){
+
+        this.handleNav(navClass);
+        this.handleOptions(options);
+        this.handleLocation(location);
+    }
+    CreateNav.prototype.handleNav = function(navClass){
+        var nav = document.createElement('ul');
+        nav.setAttribute('class',navClass);
+
+        this.nav = nav;
+    }
+    CreateNav.prototype.handleOptions = function(options){
+        var a, li, cl, cls, className;
+
+        for(var i = 0; i < options.urls.length; i++){
+            a = document.createElement('a');
+            for(var s = 0; s < options.class.length; s++){
+                cls = a.getAttribute('class');
+                cl = options.class[s];
+
+                console.log(cls);
+                className = cls + ' ' + cl;
+                a.setAttribute('class', className);
+            }
+
+            a.setAttribute('href', options.urls[i]);
+            a.innerText = options.titles[i];
+
+            li = document.createElement('li');
+            li.appendChild(a);
+
+            this.nav.appendChild(li);
+        }
+    }
+    CreateNav.prototype.handleLocation = function(location){
+        location.appendChild(this.nav);
+    }
+
+    var addItem = new CreateNav('my_nav', document.getElementById('nav'), {
+        urls: ['#home', '#contact-us'],
+        titles : ['home', 'contact-us'],
+        class : ['something1', 'something2']
+    });
+
+</script>
+</body>
+</html>
+
+<!--TODO-->
+<!--Create a small-plugin, which is based on a Construtor "CreateNav" and its prototypes. It will generate a navigation.-->
+<!--Contructor will take two arguments,-->
+<!--1. first is the class of nav. (type string)-->
+<!--2. location to append (type node)-->
+<!--2. second is the object for navigation links, which will be like this-->
+<!--{-->
+<!--urls : ['#lorem', '#ipsum']-->
+<!--eachItemClass: ['something1', 'something2']-->
+<!--}-->
+
+<!--e.g-->
+
+<!--var c1 = new CreateNav('my_nav', document.getElementById('myLoc1'), {-->
+<!--urls : ['#lorem', '#ipsum']-->
+<!--eachItemClass: ['something1', 'something2']-->
+<!--});-->

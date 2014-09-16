@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::IQ Test::.</title>
+    <style type="text/css" rel="stylesheet" href="css/bootstrap.css"></style>
+</head>
+<body>
+
+<script type="text/javascript">
+    var quiz = {
+        question1:{
+            question:'How Many Provence Pakistan Has?',
+            option1:'6',
+            option2:'3',
+            option3:'4',
+            option4:'8',
+            answer:'option3'
+        },
+        question2:{
+            question:'How Many Provence India Has?',
+            option1:'40',
+            option2:'25',
+            option3:'38',
+            option4:'52',
+            answer:'option4'
+        },
+        question3:{
+            question:"What is the date of pakistan independence's day",
+            option1:'14/08/1947',
+            option2:'15/09/1947',
+            option3:'18/02/1947',
+            option4:'12/01/1947',
+            answer:'option1'
+        }
+    };
+
+    function nextQuestion(e){
+        var a = 0;
+        var ans1 = document.getElementById('radio1');
+        var ans2 = document.getElementById('radio2');
+        var ans3 = document.getElementById('radio3');
+        var ans4 = document.getElementById('radio4');
+
+        if(a !== questionArray.length){
+
+            form.appendChild(option1);
+            form.appendChild(optionLabel1);
+            form.appendChild(option2);
+            form.appendChild(optionLabel2);
+            form.appendChild(option3);
+            form.appendChild(optionLabel3);
+            form.appendChild(option4);
+            form.appendChild(optionLabel4);
+
+            question.innerText = questionArray[a][0];
+            optionLabel1.innerText = questionArray[a][1];
+            optionLabel2.innerText = questionArray[a][2];
+            optionLabel3.innerText = questionArray[a][3];
+            optionLabel4.innerText = questionArray[a][4];
+
+            a++;
+
+//            var radioChecked = ans1.checked || ans2.checked || ans3.checked || ans4.checked;
+//            if(radioChecked){
+//                console.log(ans1.checked && ans1.value);
+//                console.log(ans2.checked && ans2.value);
+//                console.log(ans3.checked && ans3.value);
+//                console.log(ans4.checked && ans4.value);
+//            }
+            form.reset();
+        }else{
+
+        }
+
+    }
+
+    function resultQuestion(){
+
+    }
+
+    var body = document.getElementsByTagName('body')[0];
+    var container = createEle({
+        ele:'div',
+        class:'container'
+    });
+    var question = createEle({
+        ele:'div',
+        class:'question'
+    });
+    var nextButton = createEle({
+        ele:'button',
+        class:'next-button',
+        text:'Next Question',
+        onClick:'nextQuestion(this);'
+    });
+    var form = createEle({
+        ele:'form',
+        class:'qa-form'
+    });
+    var option1 = createEle({
+        ele:'input',
+        id:'radio1',
+        type:'radio',
+        name:'option',
+        value:'1'
+    });
+    var optionLabel1 = createEle({
+        ele:'label',
+        for:'radio1'
+    });
+    var option2 = createEle({
+        ele:'input',
+        id:'radio2',
+        type:'radio',
+        name:'option',
+        value:'2'
+    });
+    var optionLabel2 = createEle({
+        ele:'label',
+        for:'radio2'
+    });
+    var option3 = createEle({
+        ele:'input',
+        id:'radio3',
+        type:'radio',
+        name:'option',
+        value:'3'
+    });
+    var optionLabel3 = createEle({
+        ele:'label',
+        for:'radio3'
+    });
+    var option4 = createEle({
+        ele:'input',
+        id:'radio4',
+        type:'radio',
+        name:'option',
+        value:'4'
+    });
+    var optionLabel4 = createEle({
+        ele:'label',
+        for:'radio4'
+    });
+
+
+
+    body.appendChild(container);
+    container.appendChild(question);
+    container.appendChild(form);
+    container.appendChild(nextButton);
+
+
+
+    function createEle(options){
+        var ele = document.createElement(options.ele);
+        options.id && ele.setAttribute('id', options.id);
+        options.class && ele.setAttribute('class', options.class);
+        options.text && (ele.innerText = options.text);
+        options.submitFun && ele.setAttribute('onsubmit', options.submitFun);
+        options.name && ele.setAttribute('name', options.name);
+        options.type && ele.setAttribute('type', options.type);
+        options.placeholder && ele.setAttribute('placeholder', options.placeholder);
+        options.required && ele.setAttribute('required', '');
+        options.for && ele.setAttribute('for', options.for);
+        options.text && (ele.innerText = options.text);
+        options.cellSpacing && ele.setAttribute('cellspacing', options.cellSpacing);
+        options.cellPadding && ele.setAttribute('cellpadding', options.cellPadding);
+        options.borderValue && ele.setAttribute('border', options.borderValue);
+        options.width && ele.setAttribute('width', options.width);
+        options.herf && ele.setAttribute('herf', options.herf);
+        options.title && ele.setAttribute('title', options.title);
+        options.src && ele.setAttribute('src', options.src);
+        options.onClick && ele.setAttribute('onClick', options.onClick);
+        options.value && ele.setAttribute('value', options.value);
+        return ele;
+    }
+</script>
+
+</body>
+</html>

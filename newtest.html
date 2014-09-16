@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::Test Array::.</title>
+</head>
+<body>
+<script type="text/javascript">
+    var pricing = [
+        {
+            Hat : 2
+        },
+        {
+            Shirt   : 5,
+            Pent    : 20
+        },
+        {
+            something1   : 5,
+            something2   : 45,
+            something3   : 60
+        },
+        {
+            Shoes   : 5,
+            HankerChief    : 20
+        }
+    ];
+//    <li>Hat : $2</li>
+
+//   console.log( pricing[0].Hat)
+var body = document.getElementsByTagName('body')[0];
+var ul = document.createElement('ul');
+    body.appendChild(ul);
+
+    for (var i = 0; i < 4; i++){
+//        console.log(i);
+        var index = pricing[i] ;
+        for(var key in index){
+//            console.log(pricing[key]);
+            var li = document.createElement('li');
+            ul.appendChild(li);
+            li.innerText = key + ': $' + index[key];
+        }
+    }
+
+</script>
+</body>
+</html>

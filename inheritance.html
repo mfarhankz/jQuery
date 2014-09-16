@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::Inheritance::.</title>
+</head>
+<body>
+<!--polymorphism-->
+<!--encapsulation-->
+<!--Inheritance-->
+<button onclick="tec.tach();">Teacher</button>
+
+<script type="text/javascript">
+    function Teacher(){
+        this.subjectOne = 'English';
+        this.subjectTow = 'Urdu';
+        this.subjectThree = 'Sindhi';
+    }
+    function StudentOne(){
+        Teacher.call(this);
+        this.class = '9th';
+    }
+    function StudentTow(){
+        Teacher.call(this);
+        this.class = '10th';
+    }
+    StudentOne.prototype = Object.create(Teacher.prototype);
+    StudentOne.prototype.constructor = StudentOne;
+
+    StudentTow.prototype = Object.create(Teacher.prototype);
+    StudentTow.prototype.constructor = StudentTow;
+
+    Teacher.prototype.tach = function(){
+        alert('I am teaching');
+    }
+    StudentOne.prototype.std1 = function(){
+        alert('I am student 1');
+    }
+    StudentTow.prototype.std2 = function(){
+        alert('I am student 2');
+    }
+
+
+    var tec = new Teacher();
+    var st1 = new StudentOne();
+    var st2 = new StudentTow();
+    st2.std2();
+    console.log(st1);
+    console.log(st2);
+</script>
+</body>
+</html>

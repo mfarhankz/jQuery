@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::Prototype::.</title>
+    <style type="text/css">
+        .wrapper{
+            width: 25%;
+            float: left;
+            border:1px #000 solid;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <form action="">
+        <input onclick="R1.changeData(value);" type="button" value="AAA"/>
+        <input onclick="R1.changeData(value);" type="button" value="BBB"/>
+        <input onclick="R1.addItem();" type="button" value="ADD"/>
+        <input onclick="R1.deleteItem();" type="button" value="Delete"/>
+    </form>
+    <ul id="loc1"></ul>
+</div>
+<div class="wrapper">
+    <form action="">
+        <input onclick="R2.changeData(value);" type="button" value="CCC"/>
+        <input onclick="R2.changeData(value);" type="button" value="DDD"/>
+        <input onclick="R2.addItem();" type="button" value="ADD"/>
+        <input onclick="R2.deleteItem();" type="button" value="Delete"/>
+    </form>
+    <ul id="loc2"></ul>
+</div>
+<script type="text/javascript">
+    var loc1 = document.getElementById('loc1');
+    var loc2 = document.getElementById('loc2');
+function Record(){
+    this.data = 'something'
+    this.price = '50'
+}
+Record.prototype.changeData = function(value){
+    this.data = value;
+}
+Record.prototype.addItem = function(){
+    var li = document.createElement('li');
+    li.innerHTML = this.data + ' : ' + this.price;
+    this.loc.appendChild(li);
+}
+    Record.prototype.deleteItem = function(){
+        var deleteNow = confirm("Are you sure you want to delete");
+        deleteNow && (this.loc.innerHTML = '');
+    }
+var R1 = new Record();
+var R2 = new Record();
+R1.loc = loc1;
+R2.loc = loc2;
+</script>
+</body>
+</html>

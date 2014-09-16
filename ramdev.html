@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::Learn JavaScript::.</title>
+</head>
+<body>
+<script type="text/javascript">
+    var body = document.getElementsByTagName('body')[0];
+    var ol = document.createElement('ol');
+    body.appendChild(ol);
+    var ramSu = ['Ramsha', 'Fiza', 'Farhan'];
+    var ramSut = {
+        name:'Farhan',
+        cast:'Khanzada',
+        age:'26',
+        mobile:'03462799866'
+    };
+    var abc = [{name:'farhan', cast:'Khanzada'},{mobile:'03462799866',email:'m.farhankz@gmail.com'},{name:'farhan', cast:'Khanzada'},{mobile:'03462799866',email:'m.farhankz@gmail.com'},{name:'farhan', cast:'Khanzada'},{mobile:'03462799866',email:'m.farhankz@gmail.com'}];
+//    for(var i = 0; i <= ramSu.length -1; i++){
+//        var li = document.createElement('li');
+//        li.innerText = ramSu[i];
+//        ol.appendChild(li);
+//    }
+//    for(var a in ramSut){
+//        var li = document.createElement('li');
+//        li.innerText = a + ':' + ramSut[a];
+//        ol.appendChild(li);
+//    }
+    for(var i = 0; i <= abc.length -1; i++){
+//        var li = document.createElement('li');
+//        li.innerText = abc[i];
+//        ol.appendChild(li);
+        var obj = abc[i];
+        for(var a in obj){
+            var li = document.createElement('li');
+            li.innerText = a.toUpperCase() + ' : ' + obj[a].toLowerCase();
+            ol.appendChild(li);
+        }
+    }
+    var div = createElement({
+        ele:'a',
+        id:'ramsha',
+        href:'#',
+        text:'Hello World !'
+    });
+    body.appendChild(div);
+
+    function createElement(option){
+       var ele = document.createElement(option.ele);
+        option.id && ele.setAttribute('id',option.id);
+        option.class && ele.setAttribute('class',option.class);
+        option.href && ele.setAttribute('href',option.href);
+        option.text && (ele.innerText = option.text);
+
+        return ele;
+    }
+</script>
+</body>
+</html>

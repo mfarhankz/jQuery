@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::jQuery Class 1::.</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var link = $("link");
+           $("button").on('click', function(){
+               var $this = $(this),
+                   styleSheet  = $this.data("file");
+
+               link.attr("href", "css/" + styleSheet + ".css");
+               $this
+                  .siblings("button")
+                  .removeAttr('disabled')
+                  .end()
+                  .attr('disabled', 'disabled');
+
+           });
+        });
+    </script>
+</head>
+<body>
+
+<div class="wrapper">
+   <ul class="ul">
+       <li>Farhan
+            <ul>
+                <li>Fiza</li>
+            </ul>
+       </li>
+       <li>Furqan
+           <ul>
+               <li>Farzana</li>
+           </ul>
+       </li>
+       <li>Shaheem</li>
+       <li>Ramsha</li>
+   </ul>
+
+    <button data-file="day">Day</button>
+    <button data-file="night">Night</button>
+</div>
+
+
+<a href="class2.html" class="next" title="Next Lesson">Next Lesson</a>
+<a href="class2.html" class="prev" title="Prev Lesson">Prev Lesson</a>
+
+</body>
+</html>

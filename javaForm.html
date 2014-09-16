@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::JavaScript Form::.</title>
+    <style type="text/css" rel="stylesheet">
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+            font-family: arial, helvetica;
+            font-size: 15px;
+        }
+        .wrapper{
+            width: 400px;
+            margin:10px auto;
+            padding: 20px;
+            overflow: hidden;
+            background:#37DCEB;
+        }
+        input[type="text"], input[type="email"]{
+            float: left;
+            width: 100%;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+        }
+        button{
+            display: block;
+            margin: 5px 5px 5px 0;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        td button{
+            display: inline-block;
+        }
+        input#female {
+            margin: 5px 3px 5px 10px;
+        }
+        input#male {
+            margin: 5px 3px 5px 0;
+        }
+        table {
+            margin: 0 auto;
+            background: #6DD8F3;
+            padding: 10px;
+        }
+        th{
+            text-align: center;
+            border-bottom: 1px #14CDD5 solid;
+            padding: 10px 0;
+            text-transform: uppercase;
+            color: #199AA5;
+        }
+        td{
+            text-align: center;
+            border-bottom: 1px #14CDD5 solid;
+            padding: 10px 0;
+            color: #199AA5;
+        }
+    </style>
+</head>
+<body>
+
+
+<script type="text/javascript">
+var body = document.getElementsByTagName('body')[0];
+var wrapper = createEle({
+    ele:'div',
+    class: 'wrapper'
+});
+var form = createEle({
+    ele:'form',
+    id: 'personal-data',
+    submitFun: 'getPersonal(event);'
+});
+var nameInput = createEle({
+    ele: 'input',
+    id: 'name',
+    type: 'text',
+    required: true,
+    placeholder:'Enter Name'
+});
+var emailInput = createEle({
+    ele: 'input',
+    id: 'email',
+    type: 'email',
+    required: true,
+    placeholder:'Enter Email'
+});
+var phoneInput = createEle({
+    ele: 'input',
+    id: 'phone',
+    type: 'text',
+    required: true,
+    placeholder:'Enter Phone'
+});
+var genderMale = createEle({
+    ele: 'input',
+    id: 'male',
+    type: 'radio',
+    name: 'radio'
+});
+var labelMale = createEle({
+    ele: 'label',
+    for: 'male',
+    text:'Male'
+});
+var genderFemale = createEle({
+    ele: 'input',
+    id: 'female',
+    type: 'radio',
+    name: 'radio'
+});
+var labelfemale = createEle({
+    ele: 'label',
+    for: 'female',
+    text:'Female'
+});
+var button = createEle({
+    ele: 'button',
+    id: 'submit',
+    class: 'submit',
+    type: 'submit',
+    text:'Submit'
+});
+var table = createEle({
+    ele:'table',
+    width:700,
+    borderValue:'0',
+    cellPadding:'0',
+    cellSpacing:'0'
+});
+var trHeading = createEle({
+    ele:'tr'
+});
+var th1 = createEle({
+    ele:'th',
+    text:'Your Name'
+});
+var th2 = createEle({
+    ele:'th',
+    text:'Your Email Address'
+});
+var th3 = createEle({
+    ele:'th',
+    text:'Your Phone'
+});
+var th4 = createEle({
+    ele:'th',
+    text:'Gender'
+});
+var th5 = createEle({
+    ele:'th',
+    text:'Action'
+});
+
+
+
+body.appendChild(wrapper);
+wrapper.appendChild(form);
+form.appendChild(nameInput);
+form.appendChild(emailInput);
+form.appendChild(phoneInput);
+form.appendChild(genderMale);
+form.appendChild(labelMale);
+form.appendChild(genderFemale);
+form.appendChild(labelfemale);
+form.appendChild(button);
+
+body.appendChild(table);
+table.appendChild(trHeading);
+trHeading.appendChild(th1);
+trHeading.appendChild(th2);
+trHeading.appendChild(th3);
+trHeading.appendChild(th4);
+trHeading.appendChild(th5);
+
+
+function getPersonal(event){
+    event.preventDefault();
+
+    if(genderMale.checked){
+        var genderValue = 'Male'
+    }else if(genderFemale.checked){
+        var genderValue = 'Female'
+    }
+    var trResult = createEle({
+        ele:'tr'
+    });
+    table.appendChild(trResult);
+
+    var nameResult = createEle({
+        ele:'td',
+        text: document.getElementById('name').value
+    });
+    var emailResult = createEle({
+        ele:'td',
+        text: document.getElementById('email').value
+    });
+    var phoneResult = createEle({
+        ele:'td',
+        text: document.getElementById('phone').value
+    });
+    var genderResult = createEle({
+        ele:'td',
+        text: genderValue
+    });
+    var deleteButton = createEle({
+        ele:'button',
+        text: 'Delete',
+        id: 'delete',
+        onClick: 'deleteRow(this)'
+    });
+    var editButton = createEle({
+        ele:'button',
+        text: 'Edit',
+        id: 'edit',
+        onClick: 'editRow(this)'
+    });
+
+    var actionResult = createEle({
+        ele:'td'
+    });
+    trResult.appendChild(nameResult);
+    trResult.appendChild(emailResult);
+    trResult.appendChild(phoneResult);
+    trResult.appendChild(genderResult);
+    trResult.appendChild(actionResult);
+    actionResult.appendChild(editButton);
+    actionResult.appendChild(deleteButton);
+
+    document.getElementById('personal-data').reset();
+    var prentTD = document.getElementById('delete').parentNode;
+    genderMale.removeAttribute('checked');
+    genderFemale.removeAttribute('checked');
+}
+function deleteRow(e){
+    e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+}
+function editRow(e){
+    var editList = e.parentNode.parentNode.childNodes;
+    for(var i = 0; i <= 0; i++){
+        var name = editList[0].innerText,
+        email = editList[1].innerText,
+        number = editList[2].innerText,
+        gender = editList[3].innerText;
+        document.getElementById('name').value = name;
+        document.getElementById('email').value = email;
+        document.getElementById('phone').value = number;
+        document.getElementById('submit').innerText = 'Save';
+        if(gender == 'Male'){
+            var genderEdit = document.getElementById('male');
+            genderEdit.setAttribute('checked', '');
+        }else if(gender == 'Female'){
+            var genderEdit = document.getElementById('female');
+            genderEdit.setAttribute('checked', '');
+        }
+    }
+    e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
+}
+function createEle(options){
+    var ele = document.createElement(options.ele);
+    options.id && ele.setAttribute('id', options.id);
+    options.class && ele.setAttribute('class', options.class);
+    options.text && (ele.innerText = options.text);
+    options.submitFun && ele.setAttribute('onsubmit', options.submitFun);
+    options.name && ele.setAttribute('name', options.name);
+    options.type && ele.setAttribute('type', options.type);
+    options.placeholder && ele.setAttribute('placeholder', options.placeholder);
+    options.required && ele.setAttribute('required', '');
+    options.for && ele.setAttribute('for', options.for);
+    options.text && (ele.innerText = options.text);
+    options.cellSpacing && ele.setAttribute('cellspacing', options.cellSpacing);
+    options.cellPadding && ele.setAttribute('cellpadding', options.cellPadding);
+    options.borderValue && ele.setAttribute('border', options.borderValue);
+    options.width && ele.setAttribute('width', options.width);
+    options.herf && ele.setAttribute('herf', options.herf);
+    options.title && ele.setAttribute('title', options.title);
+    options.src && ele.setAttribute('src', options.src);
+    options.onClick && ele.setAttribute('onClick', options.onClick);
+
+    return ele;
+}
+</script>
+</body>
+</html>

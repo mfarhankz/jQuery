@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+<button type="button" onclick="abc();">Submit</button>
+<div id="sec1">
+    <ul class="ul1">
+s
+    </ul>
+    <ul class="ul1 main">
+
+    </ul>
+</div>
+<div id="sec2">
+    <ul class="ul1">
+
+    </ul>
+    <ul class="ul2">
+
+    </ul>
+</div>
+<script type="text/javascript">
+    function abc(){
+        //$('<li>Farhan</li>').appendTo('#sec1 ul');
+        $('#sec1').find('.ul1').filter('.main').append('<li>Farhan Khanzada</li>');
+    }
+</script>
+</body>
+</html>

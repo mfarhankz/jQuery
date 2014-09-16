@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="http://localhost/hmg/js/vendor/jquery-1.10.2.min.js"></script>
+
+    <style>
+        .box{
+            width: 100%;
+            float:left;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="man">
+    <div id="d1">hello</div>
+    <div id="d2">hello</div>
+    <div id="d3">hello</div>
+
+</div>
+    <script type="text/javascript">
+        var pbox = document.getElementsByClassName('box')[0];
+        //console.log(pbox);
+        //$('').appendTo('body');
+        $('<div id="woman">something</div>').insertAfter('div#d2');
+        $('div#d2').append('<div id="woman">something</div>');
+        $('div#d2').prepend('<div id="woman">something</div>');
+        $('div#d2').before('<div id="woman">something</div>');
+        $('div#d2').after('<div id="woman">something</div>');
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.::Test::.</title>
+</head>
+<body>
+    <script>
+//        var values = {a : 5, b : 6, c : 8}
+//        function natureValues(){
+//            for(var i in values){
+//                var  keyword = values[i];
+//                var abc = keyword % 2 == 0;
+//                if(abc == true){
+//                    console.log('even')
+//                }else{
+//                    console.log('odd')
+//                }
+//            }
+//        }
+        //natureValues();
+
+//        var values = [5, 8, 3];
+//        function abc(){
+//            var valTest = [];
+//            for(var i = 0; i < values.length; ++i){
+//                var current = values[i];
+//                for(var f = current -1; f >= 1; --f){
+//                    current = current * f;
+//                }
+//                valTest.push(current);
+//            }
+//            console.log(valTest);
+//        }
+//        abc();
+
+//        function getValues(){
+//            var nameValue = document.getElementById('name').value;
+//            var emailValue = document.getElementById('email').value;
+//            console.log('name: ', nameValue , ' Email: ', emailValue)
+//            document.getElementById("form").reset();
+//            event.preventDefault();
+//        }
+//        var array = ['a', 'b', 'c', 'd'];
+//
+//        function reverse(){
+//            var newArray = [];
+//
+//            for(var c = array.length -1; c >= 0; c--){
+//                console.log(array[c]);
+//            }
+//
+//             for(var i = 0; i < array.length; ++i){
+//                    newArray.unshift(array[i]);
+//             }
+//            console.log(newArray);
+//           for(var a = 0; a < newArray.length; ++a){
+//                console.log(newArray[a]);
+//           }
+//        }
+//        reverse();
+        var abc = {a : 'lorem',b : 'ipsum dolar',c : 'sit amet'}
+        var bbc = ['farhan', 'raj', 'aa']
+        function maxLength(values){
+            var max = '';
+            for(var a in values){
+                if(values[a].length > max.length){
+                 max = values[a];
+                }
+            }
+            return max;
+        }
+
+        var result = maxLength(bbc);
+        console.log(result);
+
+
+    </script>
+
+    <!--<form onsubmit="getValues()" id="form">-->
+        <!--<input type="text" id="name" placeholder="Name" required/>-->
+        <!--<input type="text" id="email" placeholder="Email" required/>-->
+        <!--<button type="submit">Sumbit</button>-->
+    <!--</form>-->
+
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<!--2 constructor function banaeyn. pehla parent , dosra child.-->
+<!--parent ki ek prototype banaeyn jo child use krega apni kisi prototype m.-->
+<!--e.g-->
+<!--child ny parent-proto ko call kea jis sy "Farhan" return hua, aur phr us m "khanzada" concate kr k return kr dea,
+jahan ye child-proto call hui hy. yani k ek button hoga jis pr click krnay sy alert hoga "Farhan khanzada"-->
+<!--getting ?-->
+<form onsubmit="callName.fullName(event);" id="form">
+    <input type="text" placeholder="Name" id="name"/>
+    <input type="text" placeholder="Cast" id="cast"/>
+    <button type="submit">Submit</button>
+</form>
+<script type="text/javascript">
+
+    function Cast(){}
+
+    Cast.prototype.lName = function(){
+        var lastName = document.getElementById('name');
+        return lastName.value;
+    }
+
+    function Name(){
+        Cast.call(this);
+    }
+
+    Name.prototype = Object.create(Cast.prototype);
+    Name.prototype.constructor = Name;
+
+    Name.prototype.fname = function(){
+        var firstName = document.getElementById('cast');
+        return firstName.value;
+    }
+
+    Name.prototype.fullName = function(e){
+        e.preventDefault();
+        alert(this.lName() + " " + this.fname());
+        var form = document.getElementById('form');
+        form.reset();
+    }
+
+    var callName = new Name();
+
+
+</script>
+</body>
+</html>
