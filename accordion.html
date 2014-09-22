@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/accordion.js"></script>
+
+</head>
+<body>
+
+<div id="accordian"></div>
+
+<script type="text/javascript">
+    var options = {
+        headings : ['Heading 1', 'Heading 2', 'Heading 3'],
+        details : ['this is heading 1 text', 'this is heading 2 text', 'this is heading 3 text'],
+        requiredElements : {
+            box : 'div',
+            headings : 'h3',
+            details : 'p'
+        },
+        $location : $('#accordian')
+    };
+
+    var garnetNew = new CreateAccording(options);
+</script>
+</body>
+</html>
